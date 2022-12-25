@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@mantine/core';
+import { Button, Progress } from '@mantine/core';
 import getTenRandomWords from '../api/words';
 
 const Practice = () => {
@@ -76,6 +76,10 @@ const Practice = () => {
             </Button>
           </div>
           {feedback && <div>{feedback}</div>}
+          <div>
+            <Progress size='xl' value={(counter / wordList.length) * 100} />
+            {`${counter} / ${wordList.length}`}
+          </div>
         </>
       )}
     </div>
