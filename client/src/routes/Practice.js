@@ -5,7 +5,7 @@ const Practice = () => {
   const [isFetching, setIsFetching] = useState(true);
   const [wordList, setWordList] = useState([]);
   const [counter, setCounter] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState({});
+  const [currentWord, setCurrentWord] = useState({});
 
   useEffect(() => {
     const getWordList = async () => {
@@ -22,13 +22,13 @@ const Practice = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentQuestion(wordList[counter]);
+    setCurrentWord(wordList[counter]);
     setIsFetching(false);
   }, [wordList, counter]);
 
   return (
     <div>
-      {isFetching ? <div>Fetching...</div> : <div>{currentQuestion?.word}</div>}
+      {isFetching ? <div>Fetching...</div> : <div>{currentWord?.word}</div>}
     </div>
   );
 };
