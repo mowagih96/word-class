@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Progress } from '@mantine/core';
 import getTenRandomWords from '../api/words';
 
@@ -8,6 +9,7 @@ const Practice = () => {
   const [counter, setCounter] = useState(0);
   const [currentWord, setCurrentWord] = useState({});
   const [feedback, setFeedback] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getWordList = async () => {
@@ -34,7 +36,9 @@ const Practice = () => {
 
     setTimeout(() => {
       setFeedback('');
-      setCounter((prevCounter) => prevCounter + 1);
+
+      if (counter === 9) navigate('/rank');
+      else setCounter((prevCounter) => prevCounter + 1);
     }, 1000);
   };
 
