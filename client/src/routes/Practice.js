@@ -8,6 +8,7 @@ const Practice = () => {
   const [wordList, setWordList] = useState([]);
   const [counter, setCounter] = useState(0);
   const [currentWord, setCurrentWord] = useState({});
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [feedback, setFeedback] = useState('');
   const navigate = useNavigate();
 
@@ -30,14 +31,21 @@ const Practice = () => {
     setIsFetching(false);
   }, [wordList, counter]);
 
+  const calculateStudentScore = () =>
+    (correctAnswersCount / wordList.length) * 100;
+
   const checkAnswer = (answer) => {
-    if (currentWord.pos === answer) setFeedback('Correct! :)');
-    else setFeedback('Wrong! :(');
+    if (currentWord.pos === answer) {
+      setFeedback('Correct! :)');
+      setCorrectAnswersCount(
+        (prevCorrectAnswersCount) => prevCorrectAnswersCount + 1
+      );
+    } else setFeedback('Wrong! :(');
 
     setTimeout(() => {
       setFeedback('');
 
-      if (counter === 9) navigate('/rank');
+      if (counter === 9) navigate('/rank', { state: calculateStudentScore() });
       else setCounter((prevCounter) => prevCounter + 1);
     }, 1000);
   };
