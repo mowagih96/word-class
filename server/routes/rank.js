@@ -10,7 +10,7 @@ const calculateRank = (finalScore) => {
   let counter = 0;
 
   for (let i = 0; i < scoresListLength; i++) {
-    if (score[i] < finalScore) counter++;
+    if (scoresList[i] < finalScore) counter++;
   }
 
   const rank = (counter / scoresListLength) * 100;
@@ -19,7 +19,7 @@ const calculateRank = (finalScore) => {
 };
 
 // POST the student's rank
-router.post('/score', (req, res) => {
+router.post('/', (req, res) => {
   const { finalScore } = req.body;
   const rank = calculateRank(finalScore);
 
