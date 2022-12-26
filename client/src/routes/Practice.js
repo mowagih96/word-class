@@ -9,6 +9,7 @@ const Practice = () => {
   const [counter, setCounter] = useState(0);
   const [currentWord, setCurrentWord] = useState({});
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [cantClick, setCantClick] = useState(false);
   const [feedback, setFeedback] = useState('');
   const navigate = useNavigate();
 
@@ -35,6 +36,8 @@ const Practice = () => {
     (correctAnswersCount / wordList.length) * 100;
 
   const checkAnswer = (answer) => {
+    setCantClick(true);
+
     if (currentWord.pos === answer) {
       setFeedback('Correct! :)');
       setCorrectAnswersCount(
@@ -44,6 +47,7 @@ const Practice = () => {
 
     setTimeout(() => {
       setFeedback('');
+      setCantClick(false);
 
       if (counter === 9) navigate('/rank', { state: calculateStudentScore() });
       else setCounter((prevCounter) => prevCounter + 1);
@@ -61,6 +65,7 @@ const Practice = () => {
             <Button
               variant='gradient'
               gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+              disabled={cantClick}
               onClick={() => checkAnswer('noun')}
             >
               noun
@@ -68,6 +73,7 @@ const Practice = () => {
             <Button
               variant='gradient'
               gradient={{ from: 'teal', to: 'lime', deg: 105 }}
+              disabled={cantClick}
               onClick={() => checkAnswer('adverb')}
             >
               adverb
@@ -75,6 +81,7 @@ const Practice = () => {
             <Button
               variant='gradient'
               gradient={{ from: 'teal', to: 'blue', deg: 60 }}
+              disabled={cantClick}
               onClick={() => checkAnswer('adjective')}
             >
               adjective
@@ -82,6 +89,7 @@ const Practice = () => {
             <Button
               variant='gradient'
               gradient={{ from: 'orange', to: 'red' }}
+              disabled={cantClick}
               onClick={() => checkAnswer('verb')}
             >
               verb
