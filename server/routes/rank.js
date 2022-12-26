@@ -15,7 +15,7 @@ const calculateRank = (finalScore) => {
 
   const rank = (counter / scoresListLength) * 100;
 
-  return Number.isInteger(rank) ? rank : rank.toFixed(2);
+  return Number.isInteger(rank) ? rank : parseInt(rank.toFixed(2));
 };
 
 // POST the student's rank
