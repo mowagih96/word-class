@@ -2,9 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const wordsRoute = require('./routes/words');
+const rankRoute = require('./routes/rank');
 
 // Start express app
 const app = express();
+
+// Middleware
+// Parse requests with JSON payloads in the body
+app.use(express.json());
 
 // Serve React app
 app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
@@ -12,6 +17,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 // React to requests
 // Register all the routers
 app.use('/api/words', wordsRoute);
+app.use('/api/rank', rankRoute);
 
 // Listen for requests
 app.listen(process.env.PORT, () => {
