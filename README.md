@@ -1,6 +1,6 @@
 # :speech_balloon: Word Class (Part of Speech) Application
 ## :warning: Prerequisites
-Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) are installed
+Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) are both installed on your system
 
 ## :package: Tech Stack
 - Frontend
