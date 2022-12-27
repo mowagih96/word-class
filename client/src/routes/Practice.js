@@ -14,10 +14,11 @@ const Practice = () => {
   const navigate = useNavigate();
   const { state: studentName } = useLocation();
 
-  // On the initial mount only:
-  // - Fetch the words data from the backend server.
-  // - If the request succeeded update the 'wordList' state.
-  // - If the request failed log the error.
+  // On the initial mount and on 'studentName' state change:
+  // - If the 'studentName' state is populated:
+  //  - Fetch the words data from the backend server.
+  //  - If the request succeeded update the 'wordList' state.
+  //  - If the request failed log the error.
   useEffect(() => {
     const getWordList = async () => {
       try {
@@ -29,8 +30,8 @@ const Practice = () => {
       }
     };
 
-    getWordList();
-  }, []);
+    if (studentName) getWordList();
+  }, [studentName]);
 
   // On the initial mount and 'wordList' & 'answeredQuestionsCounter' states change:
   // - Update the 'currentWord' state to the right word based on 'answeredQuestionsCounter' state.
