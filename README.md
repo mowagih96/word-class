@@ -14,6 +14,7 @@ Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.o
   - Mantine
   - Axios
   - React Router v6
+  - react-confetti
   - SASS
   
 - Backend
