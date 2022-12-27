@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Progress } from '@mantine/core';
 import getTenRandomWords from '../api/words';
 
@@ -12,6 +12,7 @@ const Practice = () => {
   const [cantClick, setCantClick] = useState(false);
   const [feedback, setFeedback] = useState('');
   const navigate = useNavigate();
+  const { state: studentName } = useLocation();
 
   // On the initial mount only:
   // - Fetch the words data from the backend server.
@@ -41,7 +42,7 @@ const Practice = () => {
 
   // Calculate the student's final score using the following formula:
   // - (number of correct answers / total number of questions) * 100
-  const calculateStudentScore = () =>
+  const calculateStudentFinalScore = () =>
     (correctAnswersCount / wordList.length) * 100;
 
   // Check the student's answer by doing the following:
@@ -66,7 +67,12 @@ const Practice = () => {
       setCantClick(false);
 
       if (answeredQuestionsCounter === 9)
-        navigate('/rank', { state: calculateStudentScore() });
+        navigate('/rank', {
+          state: {
+            studentName,
+            studentFinalScore: calculateStudentFinalScore(),
+          },
+        });
       else setAnsweredQuestionsCounter((prevCounter) => prevCounter + 1);
     }, 500);
   };
