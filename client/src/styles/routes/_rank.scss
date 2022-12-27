@@ -1,0 +1,13 @@
+.layout3 {
+  @include flex-box(column, center, center);
+  height: 100vh;
+
+  .congratulations-message {
+    font-size: 4rem;
+  }
+
+  .try-again-button {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+}
