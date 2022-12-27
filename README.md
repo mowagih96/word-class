@@ -1,9 +1,9 @@
 # :speech_balloon: Word Class (Part of Speech) Application
 
 ## :camera_flash: Screenshots
-![Alt text](https://i.imgur.com/0tZVKue.png "Home Screen")
-![Alt text](https://i.imgur.com/R1hUgLE.png "Practice Screen")
-![Alt text](https://i.imgur.com/I1s7w8M.png "Rank Screen")
+![Alt text](https://i.imgur.com/iu0kP2k.png "Home Screen")
+![Alt text](https://i.imgur.com/hGeKcRK.png "Practice Screen")
+![Alt text](https://i.imgur.com/9r45ojA.png "Rank Screen")
 
 ## :warning: Prerequisites
 Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) are both installed on your system
