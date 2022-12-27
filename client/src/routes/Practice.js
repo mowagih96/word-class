@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { Button, Progress } from '@mantine/core';
+import { showNotification } from '@mantine/notifications';
 import getTenRandomWords from '../api/words';
 
 const Practice = () => {
@@ -48,7 +49,7 @@ const Practice = () => {
 
   // Check the student's answer by doing the following:
   // - Prevent the student from clicking on any other choices buttons while showing feedback.
-  // - Shows the student a positive or negative feedback depending on their answer.
+  // - Shows the student a positive or negative feedback using a notification system depending on their answer.
   // - If the student chose the correct answer increment the 'correctAnswersCount' state.
   // - After half a second, Reset the feedback and let the student click the choices buttons again and
   // - If the  'answeredQuestionsCounter' state doesn't equal to 9 increment it to move to the next question
@@ -57,11 +58,24 @@ const Practice = () => {
     setCantClick(true);
 
     if (currentWord.pos === answer) {
-      setFeedback('Correct! :)');
+      showNotification({
+        autoClose: 3000,
+        title: '✅ Correct!',
+        message: 'Keep it up!',
+        color: 'green',
+        loading: false,
+      });
       setCorrectAnswersCount(
         (prevCorrectAnswersCount) => prevCorrectAnswersCount + 1
       );
-    } else setFeedback('Wrong! :(');
+    } else
+      showNotification({
+        autoClose: 3000,
+        title: '❌ Wrong!',
+        message: 'Focus and Keep trying!',
+        color: 'red',
+        loading: false,
+      });
 
     setTimeout(() => {
       setFeedback('');
