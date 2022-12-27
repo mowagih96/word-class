@@ -17,6 +17,6 @@ app.use('/api/words', wordsRoute);
 app.use('/api/rank', rankRoute);
 
 // Listen for requests
-app.listen(process.env.PORT, () => {
+app.listen(PORT_NUMBER, () => {
   console.log(`Listening on port ${PORT_NUMBER}`);
 });
