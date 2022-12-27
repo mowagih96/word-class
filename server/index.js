@@ -11,9 +11,6 @@ const app = express();
 // Parse requests with JSON payloads in the body
 app.use(express.json());
 
-// Serve React app
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
-
 // React to requests
 // Register all the routers
 app.use('/api/words', wordsRoute);
