@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { Button, Progress } from '@mantine/core';
+import { LoadingOverlay, Button, Progress } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import getTenRandomWords from '../api/words';
 
@@ -98,54 +98,49 @@ const Practice = () => {
 
   return (
     <div className='layout2'>
-      {isFetching ? (
-        <div>Fetching...</div>
-      ) : (
-        <>
-          <div className='current-word'>{currentWord?.word}</div>
-          <div className='choices-button-group'>
-            <Button
-              variant='gradient'
-              gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
-              disabled={cantClick}
-              onClick={() => checkAnswer('noun')}
-            >
-              noun
-            </Button>
-            <Button
-              variant='gradient'
-              gradient={{ from: 'teal', to: 'lime', deg: 105 }}
-              disabled={cantClick}
-              onClick={() => checkAnswer('adverb')}
-            >
-              adverb
-            </Button>
-            <Button
-              variant='gradient'
-              gradient={{ from: 'teal', to: 'blue', deg: 60 }}
-              disabled={cantClick}
-              onClick={() => checkAnswer('adjective')}
-            >
-              adjective
-            </Button>
-            <Button
-              variant='gradient'
-              gradient={{ from: 'orange', to: 'red' }}
-              disabled={cantClick}
-              onClick={() => checkAnswer('verb')}
-            >
-              verb
-            </Button>
-          </div>
-          {feedback && <div>{feedback}</div>}
-          <Progress
-            className='progress-bar'
-            label={`${answeredQuestionsCounter} / ${wordList.length}`}
-            size='xl'
-            value={(answeredQuestionsCounter / wordList.length) * 100}
-          />
-        </>
-      )}
+      <LoadingOverlay visible={isFetching} overlayBlur={2} />
+      <div className='current-word'>{currentWord?.word}</div>
+      <div className='choices-button-group'>
+        <Button
+          variant='gradient'
+          gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+          disabled={cantClick}
+          onClick={() => checkAnswer('noun')}
+        >
+          noun
+        </Button>
+        <Button
+          variant='gradient'
+          gradient={{ from: 'teal', to: 'lime', deg: 105 }}
+          disabled={cantClick}
+          onClick={() => checkAnswer('adverb')}
+        >
+          adverb
+        </Button>
+        <Button
+          variant='gradient'
+          gradient={{ from: 'teal', to: 'blue', deg: 60 }}
+          disabled={cantClick}
+          onClick={() => checkAnswer('adjective')}
+        >
+          adjective
+        </Button>
+        <Button
+          variant='gradient'
+          gradient={{ from: 'orange', to: 'red' }}
+          disabled={cantClick}
+          onClick={() => checkAnswer('verb')}
+        >
+          verb
+        </Button>
+      </div>
+      {feedback && <div>{feedback}</div>}
+      <Progress
+        className='progress-bar'
+        label={`${answeredQuestionsCounter} / ${wordList.length}`}
+        size='xl'
+        value={(answeredQuestionsCounter / wordList.length) * 100}
+      />
     </div>
   );
 };
