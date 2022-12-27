@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Button } from '@mantine/core';
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
@@ -7,9 +7,7 @@ import rankStudent from '../api/rank';
 
 const Rank = () => {
   const [studentRank, setStudentRank] = useState(null);
-  const {
-    state: { studentName, studentFinalScore },
-  } = useLocation();
+  const { state } = useLocation();
   const navigate = useNavigate();
   const { width, height } = useWindowSize();
 
@@ -20,7 +18,7 @@ const Rank = () => {
   useEffect(() => {
     const getStudentRank = async () => {
       try {
-        const { status, data } = await rankStudent(studentFinalScore);
+        const { status, data } = await rankStudent(state.studentFinalScore);
 
         if (status === 200) setStudentRank(data.rank);
       } catch (error) {
@@ -28,14 +26,18 @@ const Rank = () => {
       }
     };
 
-    getStudentRank();
-  }, [studentFinalScore]);
+    if (state?.studentFinalScore) getStudentRank();
+  }, [state?.studentFinalScore]);
+
+  // Redirect to the Home route if the student tried to access the Rank route
+  // from the address bar by typing /rank without entering a name in the form or answering the questions.
+  if (!state) return <Navigate to='/' />;
 
   return (
     <div>
       <Confetti width={width} height={height} recycle={false} />
       {studentRank
-        ? `Congratulations ${studentName}! Your Rank is ${studentRank}`
+        ? `Congratulations ${state.studentName}! Your Rank is ${studentRank}`
         : ''}
       <Button onClick={() => navigate('/practice')}>Try again</Button>
     </div>
