@@ -1,13 +1,13 @@
-.layout {
+.home-layout {
   @include flex-box(column, center, center);
   height: 100vh;
 
   .student-name-form {
-    @include flex-box(column, center, center, 20px);
+    @include flex-box(column, center, center, 1.5rem);
     width: 40vw;
     /* border: 1px solid grey;
     border-radius: 5px; */
-    padding: 50px 150px 50px 150px;
+    padding: 6rem 6rem 6rem 6rem;
 
     .student-name-form__text-input {
       width: 100%;

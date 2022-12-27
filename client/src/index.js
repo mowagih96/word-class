@@ -7,11 +7,7 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MantineProvider
-      theme={{ colorScheme: 'dark' }}
-      withGlobalStyles
-      withNormalizeCSS
-    >
+    <MantineProvider withGlobalStyles withNormalizeCSS>
       <NotificationsProvider position='top-right' zIndex={2077}>
         <App />
       </NotificationsProvider>

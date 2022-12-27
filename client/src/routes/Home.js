@@ -35,7 +35,7 @@ const Home = () => {
   };
 
   return (
-    <div className='layout'>
+    <div className='home-layout'>
       <Paper shadow='sm' withBorder>
         <form className='student-name-form' onSubmit={handleSubmit}>
           <TextInput

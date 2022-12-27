@@ -34,17 +34,21 @@ const Rank = () => {
   if (!state) return <Navigate to='/' />;
 
   return (
-    <div className='layout3'>
+    <div className='rank-layout'>
       <Confetti width={width - 10} height={height - 10} recycle />
-      <div className='congratulations-message'>{`Congratulations ${state.studentName}! 🎉🎉🎉`}</div>
-      <div className='congratulations-message'>{` Your Rank is ${studentRank}`}</div>
-      <Button
-        className='try-again-button'
-        size='lg'
-        onClick={() => navigate('/practice', { state: state.studentName })}
-      >
-        Try again
-      </Button>
+      {studentRank && (
+        <>
+          <div className='congratulations-message'>{`Congratulations ${state.studentName}! 🎉🎉🎉`}</div>
+          <div className='congratulations-message'>{` Your Rank is ${studentRank}`}</div>
+          <Button
+            className='try-again-button'
+            size='lg'
+            onClick={() => navigate('/practice', { state: state.studentName })}
+          >
+            Try again
+          </Button>
+        </>
+      )}
     </div>
   );
 };

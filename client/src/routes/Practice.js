@@ -97,7 +97,7 @@ const Practice = () => {
   if (!studentName) return <Navigate to='/' />;
 
   return (
-    <div className='layout2'>
+    <div className='practice-layout'>
       <LoadingOverlay visible={isFetching} overlayBlur={2} />
       <div className='current-word'>{currentWord?.word}</div>
       <div className='choices-button-group'>
