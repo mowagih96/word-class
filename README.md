@@ -21,19 +21,10 @@ Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.o
 - Navigate to the project directory <code>cd word-class</code>
 - Navigate to the client directory <code>cd client</code> then install node dependencies <code>npm install</code>
 - Navigate back to the server directory <code>cd ../server</code> then install node dependencies <code>npm install</code>
-- Navigate back to the project directory <code>cd ..</code>
 
-## :computer:	Development Mode
-To run the app in development mode using the same opened terminal:
-  - Navigate to the server directory <code>cd server</code> then type <code>npm run dev</code> then hit <code>Enter</code> to start the backend server
+## :computer:	Run the app
+  - In the server directory type <code>npm run dev</code> then hit <code>Enter</code> to start the backend server
   - Open up a new terminal in the project directory
   - Navigate to the client directory <code>cd client</code> then type <code>npm start</code> then hit <code>Enter</code> to start the frontend client
   - Your default browser will open the app
   - Enter your name and put your English knoweldge into the test right away!
- 
-## :building_construction: Production Mode
- To run the app in production mode using the same opened terminal:
-   - Navigate to the client directory <code>cd client</code> then type <code>npm start</code> then hit <code>Enter</code> to create an optimizied production build
-   - Navigate back to the server directory <code>cd ../server</code> then type <code>npm run dev</code> then hit <code>Enter</code> to start the backend server
-   - Your default browser will open the app
-   - Enter your name and put your English knoweldge into the test right away!
