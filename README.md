@@ -16,7 +16,7 @@ Make sure [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) are ins
   - Nodemon
 
 ## :scroll: Steps
-- Open up a new terminal
+- Open up a new terminal in a directory of your choice
 - Clone the repo by using git: <code>git clone https://github.com/mowagih96/word-class.git</code>
 - Navigate to the project directory <code>cd word-class</code> and install node dependencies <code>npm install</code>
 
