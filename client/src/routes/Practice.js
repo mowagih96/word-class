@@ -6,13 +6,17 @@ import getTenRandomWords from '../api/words';
 const Practice = () => {
   const [isFetching, setIsFetching] = useState(true);
   const [wordList, setWordList] = useState([]);
-  const [counter, setCounter] = useState(0);
+  const [answeredQuestionsCounter, setAnsweredQuestionsCounter] = useState(0);
   const [currentWord, setCurrentWord] = useState({});
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [cantClick, setCantClick] = useState(false);
   const [feedback, setFeedback] = useState('');
   const navigate = useNavigate();
 
+  // On the initial mount only:
+  // - Fetch the words data from the backend server.
+  // - If the request successed update the 'wordList' state.
+  // - If the request failed log the error.
   useEffect(() => {
     const getWordList = async () => {
       try {
@@ -27,14 +31,26 @@ const Practice = () => {
     getWordList();
   }, []);
 
+  // On the initial mount and 'wordList' & 'answeredQuestionsCounter' states change:
+  // - Update the 'currentWord' state to the right word based on 'answeredQuestionsCounter' state.
+  // - Disable the fetching message.
   useEffect(() => {
-    setCurrentWord(wordList[counter]);
+    setCurrentWord(wordList[answeredQuestionsCounter]);
     setIsFetching(false);
-  }, [wordList, counter]);
+  }, [wordList, answeredQuestionsCounter]);
 
+  // Calculate the student's final score using the following formula:
+  // - (number of correct answers / total number of questions) * 100
   const calculateStudentScore = () =>
     (correctAnswersCount / wordList.length) * 100;
 
+  // Check the student's answer by doing the following:
+  // - Prevent the student from clicking on any other choices buttons while showing feedback.
+  // - Shows the student a positive or negative feedback depending on their answer.
+  // - If the student chose the correct answer increment the 'correctAnswersCount' state.
+  // - After half a second, Reset the feedback and let the student click the choices buttons again and
+  // - If the  'answeredQuestionsCounter' state doesn't equal to 9 increment it to move to the next question
+  // - Otherwise automatically navigate the student to the 'rank' route.
   const checkAnswer = (answer) => {
     setCantClick(true);
 
@@ -49,9 +65,10 @@ const Practice = () => {
       setFeedback('');
       setCantClick(false);
 
-      if (counter === 9) navigate('/rank', { state: calculateStudentScore() });
-      else setCounter((prevCounter) => prevCounter + 1);
-    }, 1000);
+      if (answeredQuestionsCounter === 9)
+        navigate('/rank', { state: calculateStudentScore() });
+      else setAnsweredQuestionsCounter((prevCounter) => prevCounter + 1);
+    }, 500);
   };
 
   return (
@@ -97,8 +114,11 @@ const Practice = () => {
           </div>
           {feedback && <div>{feedback}</div>}
           <div>
-            <Progress size='xl' value={(counter / wordList.length) * 100} />
-            {`${counter} / ${wordList.length}`}
+            <Progress
+              size='xl'
+              value={(answeredQuestionsCounter / wordList.length) * 100}
+            />
+            {`${answeredQuestionsCounter} / ${wordList.length}`}
           </div>
         </>
       )}
