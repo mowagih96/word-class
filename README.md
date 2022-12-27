@@ -28,3 +28,7 @@ Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.o
   - Navigate to the client directory <code>cd client</code> then type <code>npm start</code> then hit <code>Enter</code> to start the frontend client
   - Your default browser will open the app
   - Enter your name and put your English knoweldge into the test right away!
+  
+ ## :notebook: N.B
+ - The frontend is running in development mode with `StrictMode` enabled to detect any problems in the code. So, Rendering a component or fetching data or hooks running twice with `StrictMode` is an expected behaviour (side effect)
+ - This won't happen on the production build
