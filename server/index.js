@@ -1,8 +1,8 @@
-require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const wordsRoute = require('./routes/words');
 const rankRoute = require('./routes/rank');
+const PORT_NUMBER = 4000;
 
 // Start express app
 const app = express();
@@ -21,5 +21,5 @@ app.use('/api/rank', rankRoute);
 
 // Listen for requests
 app.listen(process.env.PORT, () => {
-  console.log(`Listening on port ${process.env.PORT}`);
+  console.log(`Listening on port ${PORT_NUMBER}`);
 });
