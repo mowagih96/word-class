@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextInput, Button } from '@mantine/core';
+import { Paper, TextInput, Button } from '@mantine/core';
 
 const Home = () => {
   const [studentName, setStudentName] = useState('');
@@ -35,18 +35,23 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          placeholder='Please enter your name'
-          label='Full name'
-          withAsterisk
-          value={studentName}
-          onChange={handleChange}
-          error={isEmpty && 'Invalid name'}
-        />
-        <Button type='submit'>Submit</Button>
-      </form>
+    <div className='layout'>
+      <Paper shadow='sm' withBorder>
+        <form className='student-name-form' onSubmit={handleSubmit}>
+          <TextInput
+            className='student-name-form__text-input'
+            placeholder='Please enter your name'
+            label='Full name'
+            withAsterisk
+            value={studentName}
+            onChange={handleChange}
+            error={isEmpty && 'Invalid name'}
+          />
+          <Button className='student-name-form__submit-button' type='submit'>
+            Submit
+          </Button>
+        </form>
+      </Paper>
     </div>
   );
 };
