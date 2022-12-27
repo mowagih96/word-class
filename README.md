@@ -1,4 +1,4 @@
-# :speech_balloon: Word Class (Part of Speech) application
+# :speech_balloon: Word Class (Part of Speech) Application
 ## :warning: Prerequisites
 Make sure [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) are installed.
 
