@@ -11,6 +11,10 @@ const Rank = () => {
   const navigate = useNavigate();
   const { width, height } = useWindowSize();
 
+  // On the initial mount and 'studentScore' state change:
+  // - Initiate a POST request to the backend server and wait for the response with the rank.
+  // - If the request succeeded update the 'studentRank' state.
+  // - If the request failed log the error to the console.
   useEffect(() => {
     const getStudentRank = async () => {
       try {
@@ -24,6 +28,7 @@ const Rank = () => {
 
     getStudentRank();
   }, [studentScore]);
+
   return (
     <div>
       <Confetti width={width} height={height} recycle={false} />
