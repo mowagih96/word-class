@@ -41,7 +41,7 @@ const Rank = () => {
       <Button
         className='try-again-button'
         size='lg'
-        onClick={() => navigate('/practice')}
+        onClick={() => navigate('/practice', { state: state.studentName })}
       >
         Try again
       </Button>
