@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { Button, Progress } from '@mantine/core';
 import getTenRandomWords from '../api/words';
 
@@ -76,6 +76,10 @@ const Practice = () => {
       else setAnsweredQuestionsCounter((prevCounter) => prevCounter + 1);
     }, 500);
   };
+
+  // Redirect to the Home route if the student tried to access the Practice route
+  // from the address bar by typing /practice without entering a name to bypass the form.
+  if (!studentName) return <Navigate to='/' />;
 
   return (
     <div>
