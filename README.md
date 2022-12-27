@@ -21,7 +21,7 @@ Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.o
 - Navigate to the project directory <code>cd word-class</code>
 - Navigate to the client directory <code>cd client</code> then install node dependencies <code>npm install</code>
 - Navigate back to the server directory <code>cd ../server</code> then install node dependencies <code>npm install</code>
-- Navigate back to the project directory <code>cd ../word-class</code>
+- Navigate back to the project directory <code>cd ..</code>
 
 ## :computer:	Development Mode
 To run the app in development mode using the same opened terminal:
