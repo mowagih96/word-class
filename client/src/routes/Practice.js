@@ -83,13 +83,13 @@ const Practice = () => {
   if (!studentName) return <Navigate to='/' />;
 
   return (
-    <div>
+    <div className='layout2'>
       {isFetching ? (
         <div>Fetching...</div>
       ) : (
         <>
-          <div>{currentWord?.word}</div>
-          <div>
+          <div className='current-word'>{currentWord?.word}</div>
+          <div className='choices-button-group'>
             <Button
               variant='gradient'
               gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
@@ -124,13 +124,12 @@ const Practice = () => {
             </Button>
           </div>
           {feedback && <div>{feedback}</div>}
-          <div>
-            <Progress
-              size='xl'
-              value={(answeredQuestionsCounter / wordList.length) * 100}
-            />
-            {`${answeredQuestionsCounter} / ${wordList.length}`}
-          </div>
+          <Progress
+            className='progress-bar'
+            label={`${answeredQuestionsCounter} / ${wordList.length}`}
+            size='xl'
+            value={(answeredQuestionsCounter / wordList.length) * 100}
+          />
         </>
       )}
     </div>

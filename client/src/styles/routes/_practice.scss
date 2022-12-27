@@ -1,0 +1,19 @@
+.layout2 {
+  @include flex-box(column, center, center);
+  height: 100vh;
+
+  .current-word {
+    font-size: 10rem;
+  }
+
+  .choices-button-group {
+    @include flex-box(row, center, center, 1rem);
+    width: 30vw;
+  }
+
+  .progress-bar {
+    width: 30vw;
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+}
