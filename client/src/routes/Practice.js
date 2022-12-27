@@ -15,7 +15,7 @@ const Practice = () => {
 
   // On the initial mount only:
   // - Fetch the words data from the backend server.
-  // - If the request successed update the 'wordList' state.
+  // - If the request succeeded update the 'wordList' state.
   // - If the request failed log the error.
   useEffect(() => {
     const getWordList = async () => {
