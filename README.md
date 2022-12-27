@@ -27,7 +27,7 @@ Please make sure that [Git](https://git-scm.com/) and [Node.js](https://nodejs.o
 To run the app in development mode using the same opened terminal:
   - Navigate to the server directory <code>cd server</code> then type <code>npm run dev</code> then hit <code>Enter</code> to start the backend server
   - Open up a new terminal in the project directory
-  - Navigate to the client directory <code>cd ../client</code> then type <code>npm start</code> then hit <code>Enter</code> to start the frontend client
+  - Navigate to the client directory <code>cd client</code> then type <code>npm start</code> then hit <code>Enter</code> to start the frontend client
   - Your default browser will open the app
   - Enter your name and put your English knoweldge into the test right away!
  
