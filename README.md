@@ -17,8 +17,10 @@ Make sure [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/) are ins
 
 ## :scroll: Steps
 - Open up a new terminal in a directory of your choice
-- Clone the repo by using git: <code>git clone https://github.com/mowagih96/word-class.git</code>
-- Navigate to the project directory <code>cd word-class</code> and install node dependencies <code>npm install</code>
+- Clone the repo by using git <code>git clone https://github.com/mowagih96/word-class.git</code>
+- Navigate to the project directory <code>cd word-class</code>
+- Navigate to the client directory <code>cd client</code> then install node dependencies <code>npm install</code>
+- Navigate back to the server directory <code>cd ../server</code> then install node dependencies <code>npm install</code>
 
 ## :computer:	Development Mode
 To run the app in development mode using the same opened terminal:
